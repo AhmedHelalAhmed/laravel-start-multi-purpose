@@ -81,4 +81,5 @@ The Laravel framework is open-source software licensed under the [MIT license](h
 - php artisan migrate:fresh
 - php artisan ui vue --auth
 - npm install admin-lte@v3.0.0-alpha.2 --save
+- npm install --save-dev @fortawesome/fontawesome-free
 
