@@ -17,5 +17,11 @@ export default [
         meta: {
         }
     },
-
+    {
+        path: "/home",
+        name: 'dashboard',
+        component: Dashboard,
+        meta: {
+        }
+    },
 ]
