@@ -52605,8 +52605,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\projects\laravel-start-multi-purpose\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\projects\laravel-start-multi-purpose\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /media/ahmedhelal/Data/my-projects/laravel-vuejs-multi-purpose/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /media/ahmedhelal/Data/my-projects/laravel-vuejs-multi-purpose/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
