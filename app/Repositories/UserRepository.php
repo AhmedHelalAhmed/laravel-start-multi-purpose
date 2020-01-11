@@ -32,4 +32,10 @@ class UserRepository implements UserRepositoryInterface
             )
         );
     }
+
+
+    public function all()
+    {
+        return $this->user->orderBy('created_at', 'DESC')->get();
+    }
 }

@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Contracts\UserServiceInterface;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
-use App\Services\UserService;
 use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
 
+
     /**
-     * @var UserService
+     * @var UserServiceInterface
      */
     private $userService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserServiceInterface $userService)
     {
 
         $this->userService = $userService;
@@ -29,7 +30,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return $this->userService->all();
     }
 
     /**

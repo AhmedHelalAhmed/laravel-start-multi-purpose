@@ -4,8 +4,9 @@
 namespace App\Contracts;
 
 
-interface UserRepositoryInterface
+interface UserServiceInterface
 {
     public function store($data);
     public function all();
+
 }
