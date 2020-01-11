@@ -21,15 +21,15 @@ class UserRepository implements UserRepositoryInterface
 
     public function store($data)
     {
+        // array filter here to remove the null values like photo
+        // array merge to override the password
         return $this->user->create(
-           [
-               'name' => $data['name'],
-               'email' => $data['email'],
-               'type' => $data['type'],
-               'bio' => $data['bio'],
-               'photo' => $data['photo'],
-               'password'=> Hash::make($data['password'])
-           ]
+            array_merge(
+                array_filter($data),
+                [
+                    'password' => Hash::make($data['password'])
+                ]
+            )
         );
     }
 }
