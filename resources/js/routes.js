@@ -1,6 +1,6 @@
 import Dashboard from './components/Dashboard.vue'
 import Test from './components/Test.vue'
-
+import Users from './components/Users.vue'
 
 export default [
     {
@@ -18,10 +18,11 @@ export default [
         }
     },
     {
-        path: "/home",
-        name: 'dashboard',
-        component: Dashboard,
+        path: "/users",
+        name: 'users.index',
+        component: Users,
         meta: {
         }
     },
+
 ]
