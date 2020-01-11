@@ -5,11 +5,13 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
-
 import VueRouter from 'vue-router';
 import routes from './routes'
+import { Form, HasError, AlertError } from 'vform'
+
+
+window.Vue = require('vue');
+window.Form = Form;
 
 Vue.use(VueRouter);
 
@@ -33,6 +35,8 @@ const router = new VueRouter({
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue')).default;
+Vue.component(HasError.name, HasError).default;
+Vue.component(AlertError.name, AlertError).default;
 
 
 
