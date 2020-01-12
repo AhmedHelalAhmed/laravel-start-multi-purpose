@@ -8,7 +8,7 @@ require('./bootstrap');
 import VueRouter from 'vue-router';
 import routes from './routes'
 import { Form, HasError, AlertError } from 'vform'
-
+import moment from 'moment';
 
 window.Vue = require('vue');
 window.Form = Form;
@@ -38,6 +38,9 @@ const router = new VueRouter({
 Vue.component(HasError.name, HasError).default;
 Vue.component(AlertError.name, AlertError).default;
 
+// global filters
+Vue.filter('capitalizeFirstLetter', text => text.charAt(0).toUpperCase() + text.slice(1));
+Vue.filter('formatDate', date => moment(date).format('MMMM Do YYYY'));
 
 
 /**
