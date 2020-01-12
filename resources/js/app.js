@@ -6,14 +6,20 @@
 
 require('./bootstrap');
 import VueRouter from 'vue-router';
-import routes from './routes'
-import { Form, HasError, AlertError } from 'vform'
+import routes from './routes';
+import { Form, HasError, AlertError } from 'vform';
 import moment from 'moment';
+import VueProgressBar from 'vue-progressbar';
 
 window.Vue = require('vue');
 window.Form = Form;
 
 Vue.use(VueRouter);
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '3px'
+});
 
 const router = new VueRouter({
     mode: 'history',
