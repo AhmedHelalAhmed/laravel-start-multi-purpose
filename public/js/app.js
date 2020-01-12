@@ -2047,24 +2047,28 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createUser: function createUser() {
+      var _this = this;
+
       this.$Progress.start(); // Submit the form via a POST request
 
-      this.form.post('api/users');
-      Fire.$emit('AfterCreated'); // fire custom event
+      this.form.post('api/users').then(function () {
+        Fire.$emit('AfterCreated'); // fire custom event
 
-      $('#addNew').modal('hide');
-      Toast.fire({
-        icon: 'success',
-        title: 'User created successfully'
-      });
-      this.$Progress.finish();
+        $('#addNew').modal('hide');
+        Toast.fire({
+          icon: 'success',
+          title: 'User created successfully'
+        });
+
+        _this.$Progress.finish();
+      })["catch"](function () {});
     },
     loadUsers: function loadUsers() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("api/users").then(function (_ref) {
         var data = _ref.data;
-        return _this.users = data;
+        return _this2.users = data;
       });
     }
   },
@@ -2072,11 +2076,11 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.');
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     this.loadUsers();
     Fire.$on('AfterCreated', function () {
-      return _this2.loadUsers();
+      return _this3.loadUsers();
     }); // listen to the event
   }
 });

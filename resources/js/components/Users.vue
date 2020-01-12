@@ -131,14 +131,20 @@
             createUser(){
                 this.$Progress.start();
                 // Submit the form via a POST request
-                this.form.post('api/users');
-                Fire.$emit('AfterCreated'); // fire custom event
-                $('#addNew').modal('hide');
-                Toast.fire({
-                    icon: 'success',
-                    title: 'User created successfully'
+                this.form.post('api/users')
+                .then(()=>{
+                    Fire.$emit('AfterCreated'); // fire custom event
+                    $('#addNew').modal('hide');
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'User created successfully'
+                    });
+                    this.$Progress.finish();
+                })
+                .catch(()=>{
+
                 });
-                this.$Progress.finish();
+
             },
             loadUsers(){
                 axios.get("api/users").then(({ data })=>(this.users= data));
