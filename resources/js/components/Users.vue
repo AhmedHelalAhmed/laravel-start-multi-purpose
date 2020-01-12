@@ -132,6 +132,7 @@
                 this.$Progress.start();
                 // Submit the form via a POST request
                 this.form.post('api/users');
+                Fire.$emit('AfterCreated'); // fire custom event
                 $('#addNew').modal('hide');
                 Toast.fire({
                     icon: 'success',
@@ -148,6 +149,7 @@
         },
         created(){
             this.loadUsers();
+            Fire.$on('AfterCreated',()=>this.loadUsers());// listen to the event
         }
     }
 </script>

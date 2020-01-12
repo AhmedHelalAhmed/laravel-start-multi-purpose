@@ -25,11 +25,14 @@ const Toast = Swal.mixin({
     }
 });
 
+
+
 // register to window to access every where in the app
 window.Vue = require('vue');
 window.Form = Form;
 window.Swal = Swal;
 window.Toast = Toast;
+window.Fire = new Vue();// global events to make custom event
 
 Vue.use(VueRouter);
 Vue.use(VueProgressBar, {

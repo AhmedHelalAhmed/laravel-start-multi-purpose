@@ -2050,6 +2050,8 @@ __webpack_require__.r(__webpack_exports__);
       this.$Progress.start(); // Submit the form via a POST request
 
       this.form.post('api/users');
+      Fire.$emit('AfterCreated'); // fire custom event
+
       $('#addNew').modal('hide');
       Toast.fire({
         icon: 'success',
@@ -2070,7 +2072,12 @@ __webpack_require__.r(__webpack_exports__);
     console.log('Component mounted.');
   },
   created: function created() {
+    var _this2 = this;
+
     this.loadUsers();
+    Fire.$on('AfterCreated', function () {
+      return _this2.loadUsers();
+    }); // listen to the event
   }
 });
 
@@ -74625,6 +74632,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 window.Form = vform__WEBPACK_IMPORTED_MODULE_2__["Form"];
 window.Swal = sweetalert2__WEBPACK_IMPORTED_MODULE_5___default.a;
 window.Toast = Toast;
+window.Fire = new Vue(); // global events to make custom event
+
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_4___default.a, {
   color: 'rgb(143, 255, 199)',
