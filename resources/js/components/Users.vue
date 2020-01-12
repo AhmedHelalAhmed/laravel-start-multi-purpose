@@ -38,7 +38,7 @@
                                         <i class="fa fa-edit blue"></i>
                                     </a>
                                     /
-                                    <a href="#">
+                                    <a href="#" @click="deleteUser(user.id)">
                                         <i class="fa fa-trash red"></i>
                                     </a>
                                 </td>
@@ -133,7 +133,7 @@
                 // Submit the form via a POST request
                 this.form.post('api/users')
                 .then(()=>{
-                    Fire.$emit('AfterCreated'); // fire custom event
+                    Fire.$emit('ReloadUsers'); // fire custom event
                     $('#addNew').modal('hide');
                     Toast.fire({
                         icon: 'success',
@@ -148,6 +148,36 @@
             },
             loadUsers(){
                 axios.get("api/users").then(({ data })=>(this.users= data));
+            },
+            deleteUser(id){
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    // send request to the server
+                    if (result.value) {
+                        this.form.delete('api/users/'+id).then(()=>{
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            );
+                            Fire.$emit('ReloadUsers'); // fire custom event
+
+                        }).catch(()=>{
+                            Swal.fire(
+                                'Failed!',
+                                'There was somthing Wrong.',
+                                'warning'
+                            );
+                        });
+                    }
+                })
             }
         },
         mounted() {
@@ -155,7 +185,7 @@
         },
         created(){
             this.loadUsers();
-            Fire.$on('AfterCreated',()=>this.loadUsers());// listen to the event
+            Fire.$on('ReloadUsers',()=>this.loadUsers());// listen to the event
         }
     }
 </script>

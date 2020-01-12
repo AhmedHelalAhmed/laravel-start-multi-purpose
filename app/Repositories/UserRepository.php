@@ -38,4 +38,9 @@ class UserRepository implements UserRepositoryInterface
     {
         return $this->user->orderBy('created_at', 'DESC')->get();
     }
+
+    public function destroy($user)
+    {
+        return $user->delete();
+    }
 }

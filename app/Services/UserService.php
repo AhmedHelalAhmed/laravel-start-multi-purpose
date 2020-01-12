@@ -28,4 +28,10 @@ class UserService implements UserServiceInterface
     {
         return $this->users->all();
     }
+
+    public function destroy($user)
+    {
+        return $this->users->destroy($user);
+
+    }
 }

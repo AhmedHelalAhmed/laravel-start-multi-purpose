@@ -75,6 +75,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $this->userService->destroy($user);
+        return ['message'=>'User deleted'];
+
     }
 }
