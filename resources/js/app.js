@@ -10,9 +10,26 @@ import routes from './routes';
 import { Form, HasError, AlertError } from 'vform';
 import moment from 'moment';
 import VueProgressBar from 'vue-progressbar';
+import Swal from 'sweetalert2';
 
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+});
+
+// register to window to access every where in the app
 window.Vue = require('vue');
 window.Form = Form;
+window.Swal = Swal;
+window.Toast = Toast;
 
 Vue.use(VueRouter);
 Vue.use(VueProgressBar, {
